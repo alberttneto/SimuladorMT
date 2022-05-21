@@ -1,0 +1,12 @@
+0^n1^n;
+q0,q1,q2,q3,q4;
+0,1;
+0,1,X,Y,B;
+(0,q1,X,R),(0,q1,0,R),(0,q2,0,L),(1,q2,Y,L),(X,q2,X,R),(Y,q3,Y,R),(Y,q1,Y,R),(Y,q2,Y,L),(Y,q3,Y,R),(B,q4,B,R),(B,q4,B,R);
+q0;
+B;
+q4;
+
+
+
+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

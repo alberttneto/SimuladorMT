@@ -1,0 +1,13 @@
+body{
+    background-color: rgb(220, 211, 186);
+}
+
+ul{
+    display:flex;
+    list-style: none;
+}
+
+li{
+
+    border: 2px solid black;
+}
