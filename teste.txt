@@ -6,7 +6,3 @@ q0,q1,q2,q3,q4;
 q0;
 B;
 q4;
-
-
-
-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
