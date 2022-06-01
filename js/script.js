@@ -54,59 +54,79 @@ function exibirMt(){
 }
 
 function transicaoSaida(obj, estado, proxElemento){
+
   for (var [key,value] of Object.entries(obj["Transicao"])){
-      var entrada = key.split("-")
-      var saida = value.split(",")
-      //console.log(saida)
-      if (entrada[0] == estado && entrada[1] == proxElemento){
-          //estado = saida[0];
-          //palavra[pos] = saida[1];
-          return saida;
-      }
+    var entrada = key.split("-");
+    var saida = value.split(",");
+    
+    if (entrada[0] == estado && entrada[1] == proxElemento){
+      return saida;
+    }
   }
-  return "erro"
+  return "erro";
+}
+
+// Marca as celulas de acordo com que anda na fita
+function marcaCelula(pos, direcao, fita, i){
+  setTimeout(function () {
+
+    var celulaAnterior = document.getElementById(pos-direcao);
+    celulaAnterior.classList.remove("destacaCelula");
+
+    var celula = document.getElementById(pos);
+    celula.classList.add("destacaCelula");
+
+    celula.innerHTML = fita[pos];
+  }, 1000 * i);
 }
 
 function executaMT(){
   fita = palavra.split("");
   const obj = JSON.parse(texto);
   var estado = obj["EstadoInicial"], pos = 0;
-  var proxElemento = "";
+  var proxElemento = "", direcao = 0;
   console.log(estado);
   console.log(fita);
+  i = 0;
+
+  document.getElementById(pos).classList.add("destacaCelula");
 
   // Andar pelo vetor
   while(1){
     proxElemento = fita[pos];
     
-    console.log(celula);
-    
+    //console.log(celula);
     console.log(estado);
     console.log(proxElemento);
+
     var saida = transicaoSaida(obj, estado, proxElemento);
+    
     if (saida == "erro"){
         console.log("Palavra não aceita")
         break;
     }
+
     console.log(saida)
     estado = saida[0];
     fita[pos] = saida[1];
     console.log(fita)
-    
-    var celula = document.getElementById(pos);
-    celula.classList.toggle("destacaCelula");
-    if (saida[2] == 'R'){
-        pos++;
-    } else{
-        pos--;
-    }
-    celula = document.getElementById(pos);
-    //celula.classList.toggle("destacaCelula");
 
-    if (obj["EstadosFinais"].indexOf(estado) > -1){
-        console.log("Palavra aceita");
-        break;
+    if (saida[2] == 'R'){
+      direcao = 1;
+      pos++;
+    } else{
+      direcao = -1;
+      pos--;
     }
+
+    
+    if (obj["EstadosFinais"].indexOf(estado) > -1){
+      console.log("Palavra aceita");
+      break;
+    }
+
+    marcaCelula(pos,direcao,fita, i);
+    i++;
   }
 }
 
