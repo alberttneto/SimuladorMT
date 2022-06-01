@@ -1,11 +1,12 @@
 
-var texto, palavra;
+var texto; // Texto do arquivo
+var palavra; // Palavra a ser aceita pela MT
 
+
+// Lendo arquivo
 function readSingleFile(evt) {
 
   var f = evt.target.files[0]; 
-  console.log(evt);
-  console.log("teste")
 
   if (f) {
     var r = new FileReader();
@@ -18,35 +19,38 @@ function readSingleFile(evt) {
   }
 }
 
+// Chama a função para ler arquivo apos inserir o mesmo
 document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
 
+
 function exibirMt(){
+  // Transforma texto em objeto
+  const obj = JSON.parse(texto);
   var input = document.querySelector("#palavra");
   var cont = 0;
-  palavra = input.value;
+  palavra = input.value + obj["SimboloBranco"]; 
 
-  console.log(palavra);
+  // Pega div que representa a fita do MT
+  var fita = document.getElementById("fita");
 
-  var ul = document.getElementById("fita");
-
-  for (child of ul.children){
-    child.remove();
+  // Se ja existe lista, remove Lista
+  if (fita.children){
+    fita.removeChild(fita.children[0]);
   }
 
+  // Cria uma nova lista
+  var ul = document.createElement("ul");
+  
   for (elemento of palavra){
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(elemento));
     li.setAttribute("id", cont);
     ul.appendChild(li);
+    fita.appendChild(ul);
     cont++;
   } 
 
   executaMT();
-}
-
-function exibirTexto(){
-  const obj = JSON.parse(texto);
-  console.log(obj);
 }
 
 function transicaoSaida(obj, estado, proxElemento){
@@ -69,7 +73,8 @@ function executaMT(){
   var estado = obj["EstadoInicial"], pos = 0;
   var proxElemento = "";
   console.log(estado);
-  console.log(fita)
+  console.log(fita);
+
   // Andar pelo vetor
   while(1){
     proxElemento = fita[pos];
