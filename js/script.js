@@ -22,8 +22,18 @@ function readSingleFile(evt) {
 // Chama a função para ler arquivo apos inserir o mesmo
 document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
 
+function abrirOp(){
+  const div = document.getElementsByTagName("div");
+  div[1].classList.remove("mostra");
+}
+
 
 function exibirMt(){
+
+  const div = document.getElementsByTagName("div");
+  div[2].classList.remove("mostra");
+
+
   // Transforma texto em objeto
   const obj = JSON.parse(texto);
   var input = document.querySelector("#palavra");
@@ -66,7 +76,7 @@ function transicaoSaida(obj, estado, proxElemento){
   return "erro";
 }
 
-// Marca as celulas de acordo com que anda na fita
+// Marca as celulas de acordo com que vai andando na fita
 function marcaCelula(pos, direcao, elemento, i){
   setTimeout(function () {
 
@@ -80,6 +90,7 @@ function marcaCelula(pos, direcao, elemento, i){
   }, 1000 * i);
 }
 
+// Função para iniciar execução da Maquina de Turing
 function executaMT(){
   fita = palavra.split("");
   const obj = JSON.parse(texto);
@@ -88,8 +99,6 @@ function executaMT(){
   console.log(estado);
   console.log(fita);
   i = 0;
-
-  //document.getElementById(pos).classList.add("destacaCelula");
 
   // Andar pelo vetor
   while(1){
@@ -126,8 +135,6 @@ function executaMT(){
       console.log("Palavra aceita");
       break;
     }
-
-    
     i++;
   }
 }

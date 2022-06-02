@@ -8,17 +8,19 @@
     <title>Document</title>
 </head>
 <body>
+
     <h1>Maquina de Turing</h1>
-    <div>  
+
+    <div id="arquivo">  
         <input type="file" id="fileinput">
-        <button type="menu" id="gerarMt">Gerar MT</button>
+        <button type="menu" id="gerarMt" onclick="abrirOp()">Gerar MT</button>
     </div>
-    <div>
+    <div class="mostra">
         <h3>Palavra</h3>
         <input type="text" id="palavra">
         <button type="button" id="playMt" onclick="exibirMt()">Iniciar Simulação</button>
     </div>
-    <div id="fita">
+    <div id="fita" class="mostra">
         <ul>
         </ul>
     </div>
