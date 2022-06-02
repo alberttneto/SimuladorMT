@@ -67,7 +67,7 @@ function transicaoSaida(obj, estado, proxElemento){
 }
 
 // Marca as celulas de acordo com que anda na fita
-function marcaCelula(pos, direcao, fita, i){
+function marcaCelula(pos, direcao, elemento, i){
   setTimeout(function () {
 
     var celulaAnterior = document.getElementById(pos-direcao);
@@ -76,7 +76,7 @@ function marcaCelula(pos, direcao, fita, i){
     var celula = document.getElementById(pos);
     celula.classList.add("destacaCelula");
 
-    celula.innerHTML = fita[pos];
+    celula.innerHTML = elemento;
   }, 1000 * i);
 }
 
@@ -89,7 +89,7 @@ function executaMT(){
   console.log(fita);
   i = 0;
 
-  document.getElementById(pos).classList.add("destacaCelula");
+  //document.getElementById(pos).classList.add("destacaCelula");
 
   // Andar pelo vetor
   while(1){
@@ -111,6 +111,8 @@ function executaMT(){
     fita[pos] = saida[1];
     console.log(fita)
 
+    marcaCelula(pos,direcao,saida[1], i);
+
     if (saida[2] == 'R'){
       direcao = 1;
       pos++;
@@ -125,7 +127,7 @@ function executaMT(){
       break;
     }
 
-    marcaCelula(pos,direcao,fita, i);
+    
     i++;
   }
 }
