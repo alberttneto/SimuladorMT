@@ -96,6 +96,7 @@ function executaMT(){
   const obj = JSON.parse(texto);
   var estado = obj["EstadoInicial"], pos = 0;
   var proxElemento = "", direcao = 0;
+  var msgFinal;
   console.log(estado);
   console.log(fita);
   i = 0;
@@ -111,7 +112,8 @@ function executaMT(){
     var saida = transicaoSaida(obj, estado, proxElemento);
     
     if (saida == "erro"){
-        console.log("Palavra não aceita")
+        msgFinal = "Palavra não aceita";
+        console.log("Palavra não aceita");
         break;
     }
 
@@ -132,10 +134,29 @@ function executaMT(){
 
     
     if (obj["EstadosFinais"].indexOf(estado) > -1){
+      msgFinal = "Palavra aceita";
       console.log("Palavra aceita");
       break;
     }
     i++;
   }
+
+  // Espera execução na fina e exibi na tela se a palvra é aceita ou rejeitada.
+  setTimeout(function () {
+    finalizacaoMt(msgFinal);
+  }, 1000 * i);
 }
 
+// Exibi mensagem no final da execução
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+
+function finalizacaoMt(msg){
+  var p = document.getElementById("msg");
+  p.innerHTML = msg;
+  modal.style.display = "block";
+}
+
+span.onclick = function() {
+  modal.style.display = "none";
+}
