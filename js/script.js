@@ -111,7 +111,7 @@ function executaMT(){
   var proxElemento = "";
   var direcao = 0; // Qual direcao vai a fita
   var msgFinal;
-  var i = 0; // Contabilizador de tempo na execução das transições graficas
+  var i = 0; // Contabilizador de tempo na execução das transições na tela
 
   // Andar pelo vetor
   while(1){
