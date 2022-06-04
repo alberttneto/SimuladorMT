@@ -1,7 +1,6 @@
 
-var texto; // Texto do arquivo
+var texto; // maquina de turing
 var palavra; // Palavra a ser aceita pela MT
-
 
 // Lendo arquivo
 function readSingleFile(evt) {
@@ -22,35 +21,38 @@ function readSingleFile(evt) {
 // Chama a função para ler arquivo apos inserir o mesmo
 document.getElementById('fileinput').addEventListener('change', readSingleFile, false);
 
+// Abre menu para inserir palavra
 function abrirOp(){
   const div = document.getElementsByTagName("div");
-  div[1].classList.remove("mostra");
+  div[1].classList.remove("ocultar");
 }
 
-
+// Inicializa MT
 function exibirMt(){
 
+  // Mostra fita
   const div = document.getElementsByTagName("div");
-  div[2].classList.remove("mostra");
-
+  div[2].classList.remove("ocultar");
+  div[3].classList.remove("ocultar");
 
   // Transforma texto em objeto
   const obj = JSON.parse(texto);
   var input = document.querySelector("#palavra");
-  var cont = 0;
-  palavra = input.value + obj["SimboloBranco"]; 
+  palavra = input.value + obj["SimboloBranco"]; // Simbolo branco final da palavra
+  var cont = 0; // Identificador das celulas da fita
 
   // Pega div que representa a fita do MT
   var fita = document.getElementById("fita");
 
   // Se ja existe lista, remove Lista
   if (fita.children){
-    fita.removeChild(fita.children[0]);
+    fita.removeChild(fita.children[1]);
   }
 
   // Cria uma nova lista
   var ul = document.createElement("ul");
   
+  // Inserindo palavra na fita
   for (elemento of palavra){
     var li = document.createElement("li");
     li.appendChild(document.createTextNode(elemento));
@@ -60,24 +62,31 @@ function exibirMt(){
     cont++;
   } 
 
+  // Inicia MT
   executaMT();
 }
 
+// Identifica a proxima transição da MT
 function transicaoSaida(obj, estado, proxElemento){
+
+  var result = [];
 
   for (var [key,value] of Object.entries(obj["Transicao"])){
     var entrada = key.split("-");
     var saida = value.split(",");
     
     if (entrada[0] == estado && entrada[1] == proxElemento){
-      return saida;
+      result.push(entrada);
+      result.push(saida);
+
+      return result;
     }
   }
   return "erro";
 }
 
 // Marca as celulas de acordo com que vai andando na fita
-function marcaCelula(pos, direcao, elemento, i){
+function marcaCelula(pos, direcao, trEntrada, trSaida, i){
   setTimeout(function () {
 
     var celulaAnterior = document.getElementById(pos-direcao);
@@ -85,44 +94,43 @@ function marcaCelula(pos, direcao, elemento, i){
 
     var celula = document.getElementById(pos);
     celula.classList.add("destacaCelula");
+    celula.innerHTML = trSaida[1];
 
-    celula.innerHTML = elemento;
+    const p = document.getElementById("transicao");
+    p.innerHTML = trEntrada + " -> " + trSaida;
   }, 1000 * i);
 }
 
 // Função para iniciar execução da Maquina de Turing
 function executaMT(){
-  fita = palavra.split("");
+
   const obj = JSON.parse(texto);
-  var estado = obj["EstadoInicial"], pos = 0;
-  var proxElemento = "", direcao = 0;
+  var fita = palavra.split("");
+  var estado = obj["EstadoInicial"];
+  var pos = 0; // identifica posicao na fita
+  var proxElemento = "";
+  var direcao = 0; // Qual direcao vai a fita
   var msgFinal;
-  console.log(estado);
-  console.log(fita);
-  i = 0;
+  var i = 0; // Contabilizador de tempo na execução das transições graficas
 
   // Andar pelo vetor
   while(1){
+
     proxElemento = fita[pos];
-    
-    //console.log(celula);
-    console.log(estado);
-    console.log(proxElemento);
 
-    var saida = transicaoSaida(obj, estado, proxElemento);
-    
-    if (saida == "erro"){
-        msgFinal = "Palavra não aceita";
-        console.log("Palavra não aceita");
-        break;
-    }
-
-    console.log(saida)
+    // Retorna resultado da transicao
+    var transicao = transicaoSaida(obj, estado, proxElemento);
+    var entrada = transicao[0];
+    var saida = transicao[1];
     estado = saida[0];
     fita[pos] = saida[1];
-    console.log(fita)
-
-    marcaCelula(pos,direcao,saida[1], i);
+    
+    if (transicao == "erro"){
+        msgFinal = "Palavra não aceita";
+        break;
+    }
+    console.log(entrada);
+    marcaCelula(pos, direcao, entrada, saida, i);
 
     if (saida[2] == 'R'){
       direcao = 1;
@@ -132,10 +140,8 @@ function executaMT(){
       pos--;
     }
 
-    
     if (obj["EstadosFinais"].indexOf(estado) > -1){
       msgFinal = "Palavra aceita";
-      console.log("Palavra aceita");
       break;
     }
     i++;

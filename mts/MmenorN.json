@@ -1,0 +1,12 @@
+{"Estados":["q0","q1","q2","q3","q4","q5","q6"],
+"Alfabeto":["0","1"],
+"AlfabetoFita":["0","1","B"],
+"Transicao":{"q0-0":"q1,B,R","q0-1":"q5,B,R",
+"q1-0":"q1,0,R","q1-1":"q2,1,R",
+"q2-0":"q3,1,L","q2-1":"q2,1,R","q2-B":"q4,B,L",
+"q3-0":"q3,0,L","q3-1":"q3,1,L","q3-B":"q0,B,R",
+"q4-0":"q4,0,L","q4-1":"q4,B,L","q4-B":"q6,0,R",
+"q5-0":"q5,B,R","q5-1":"q5,B,R"},
+"EstadoInicial":"q0",
+"SimboloBranco":"B",
+"EstadosFinais":[]}
