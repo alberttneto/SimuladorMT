@@ -38,7 +38,7 @@ function exibirMt(){
   // Transforma texto em objeto
   const obj = JSON.parse(texto);
   var input = document.querySelector("#palavra");
-  palavra = input.value + obj["SimboloBranco"]; // Simbolo branco final da palavra
+  palavra = obj["SimboloBranco"] + input.value + obj["SimboloBranco"]; // Simbolo branco final da palavra
   var cont = 0; // Identificador das celulas da fita
 
   // Pega div que representa a fita do MT
@@ -107,7 +107,7 @@ function executaMT(){
   const obj = JSON.parse(texto);
   var fita = palavra.split("");
   var estado = obj["EstadoInicial"];
-  var pos = 0; // identifica posicao na fita
+  var pos = 1; // identifica posicao na fita
   var proxElemento = "";
   var direcao = 0; // Qual direcao vai a fita
   var msgFinal;
