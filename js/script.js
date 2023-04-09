@@ -23,17 +23,17 @@ document.getElementById('fileinput').addEventListener('change', readSingleFile, 
 
 // Abre menu para inserir palavra
 function abrirOp(){
-  const div = document.getElementsByTagName("div");
-  div[1].classList.remove("ocultar");
+  const section = document.getElementsByTagName("section");
+  section[1].classList.remove("ocultar");
 }
 
 // Inicializa MT
 function exibirMt(){
 
   // Mostra fita
-  const div = document.getElementsByTagName("div");
-  div[2].classList.remove("ocultar");
-  div[3].classList.remove("ocultar");
+  const section = document.getElementsByTagName("section");
+  section[2].classList.remove("ocultar");
+  section[3].classList.remove("ocultar");
 
   // Transforma texto em objeto
   const obj = JSON.parse(texto);
@@ -41,7 +41,7 @@ function exibirMt(){
   palavra = obj["SimboloBranco"] + input.value + obj["SimboloBranco"]; // Simbolo branco final da palavra
   var cont = 0; // Identificador das celulas da fita
 
-  // Pega div que representa a fita do MT
+  // Pega section que representa a fita do MT
   var fita = document.getElementById("fita");
 
   // Se ja existe lista, remove Lista
@@ -147,7 +147,7 @@ function executaMT(){
     i++;
   }
 
-  // Espera execução na fina e exibi na tela se a palvra é aceita ou rejeitada.
+  // Espera execução na fita e exibi na tela se a palvra é aceita ou rejeitada.
   setTimeout(function () {
     finalizacaoMt(msgFinal);
   }, 1000 * i);
@@ -165,4 +165,8 @@ function finalizacaoMt(msg){
 
 span.onclick = function() {
   modal.style.display = "none";
+
+  const section = document.getElementsByTagName("section");
+  section[2].classList.add("ocultar")
+  section[3].classList.add("ocultar");
 }

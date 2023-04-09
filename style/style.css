@@ -2,12 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Concert+One&display=swap');
 
 body{
-    background-color: #373333;
+    background-color: #4e5250;
     text-align: center;
     font-family: 'Inter', sans-serif;
     font-family: 'Kdam Thmor Pro', sans-serif;
     font-family: 'Montserrat', sans-serif;
     font-family: 'Roboto', sans-serif;  
+    color: aliceblue;
 }
 
 h1{
@@ -17,22 +18,38 @@ h1{
     text-shadow: 3px 3px 2px #5E17EB;
 }
 
-div{
+section{
+    margin: 15px auto;
+    width: 80%;
     padding: 30px 30px;
     border-style: solid;
-    border-width: 0px 2px 2px 2px;
-    border-radius: 5px;
-    background-color: rgb(223, 232, 230);
+    border-width: 2px 2px 2px 2px;
+    border-radius: 10px;
+    background-color: rgb(21, 32, 61);
 }
 
-#arquivo{
-    border-top: 2px solid black;
+section div{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#fileinput{
+    width: 70%;
+}
+section div > *{
+    height: 10%;
+    margin: auto 5px;
 }
 
 h5{
     margin-top: 0px;
-    color: rgb(51, 51, 113);
+    color: rgb(234, 234, 241);
     margin-bottom: 15px;
+}
+
+#palavra{
+    width: 40%;
 }
 
 ul{
@@ -45,6 +62,7 @@ li{
     border: 2px solid rgb(42, 50, 55);
     border-radius: 1.5px;
     background-color: rgb(246, 248, 250);
+    color:black;
 }
 
 .ocultar{
@@ -76,13 +94,13 @@ li{
     padding: 20px;
     border: 1px solid #888;
     width: 40%; /* Could be more or less, depending on screen size */
+    color:black;
   }
   
   /* The Close Button */
 .close {
     color: red;
     float: right;
-    font-size: 40px;
     font-weight: bold;
 }
   

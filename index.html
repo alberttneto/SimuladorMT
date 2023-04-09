@@ -14,41 +14,40 @@
 
     <h1>Maquina de Turing</h1>
 
-    <div id="arquivo" class="mb-3">
-        <label for="fileinput" class="form-label">Selecione arquivo com configurações de um MT</label>
-        <input class="form-control" type="file" id="fileinput">
-        <button type="menu" id="gerarMt" onclick="abrirOp()">Gerar MT</button>
-    </div>
+    <section id="arquivo" class="mb-3">
+        <h5>Selecione arquivo com configurações de um MT</h5>
+        <div>
+            <img src="/img/icone-arquivo.png">
+            <input class="form-control" type="file" id="fileinput">
+            <button id="gerarMt" type="button" class="btn btn-light" onclick="abrirOp()">Gerar MT</button>
+        </div>
+    </section>
 
-    <!--div id="arquivo">  
-        <input type="file" id="fileinput">
-        <button type="menu" id="gerarMt" onclick="abrirOp()">Gerar MT</button>
-    </div-->
-
-
-    <div class="ocultar">
+    <section class="ocultar">
         <h5>Palavra</h5>
-        <input type="text" id="palavra">
-        <button type="button" id="playMt" onclick="exibirMt()">Iniciar Simulação</button>
-    </div>
-    <div id="fita" class="ocultar">
+        <div>
+            <input type="text" class="form-control" id="palavra">
+            <button id="playMt" type="button" class="btn btn-light" onclick="exibirMt()">Iniciar Simulação</button>
+        </div>
+    </section>
+    <section id="fita" class="ocultar">
         <h5>Fita</h5>
         <ul>
         </ul>
-    </div>
-    <div class="ocultar">  
+    </section>
+    <section class="ocultar">  
         <h5>Transição</h5>
         <p id="transicao"></p>
-    </div>
+    </section>
 
-    <div id="myModal" class="modal">
+    <section id="myModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <p id="msg"></p>
-            <span class="close">&times;</span>
+            <p class="close">Fechar</p>
         </div>
       
-      </div>
+    </section>
 </body>
 <!-- JAVASCRIPT-->
 <script src="js/script.js"></script>
