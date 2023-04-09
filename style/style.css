@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Kdam+Thmor+Pro&family=Montserrat:wght@500;580&family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Concert+One&display=swap');
 
 body{
-    background-color: rgb(251, 251, 251);
+    background-color: #373333;
     text-align: center;
     font-family: 'Inter', sans-serif;
     font-family: 'Kdam Thmor Pro', sans-serif;
@@ -10,8 +11,10 @@ body{
 }
 
 h1{
+    font-family: 'Bungee', cursive;
     margin: 40px;
-    color: rgb(51, 51, 113);
+    color: white;
+    text-shadow: 3px 3px 2px #5E17EB;
 }
 
 div{

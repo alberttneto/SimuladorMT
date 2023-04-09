@@ -5,19 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <!-- Bootstrap CSS -->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
       <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style/style.css">
     <title>Maquina de Turing</title>
 </head>
 <body>
 
     <h1>Maquina de Turing</h1>
 
-    <div id="arquivo">  
-        <input type="file" id="fileinput">
+    <div id="arquivo" class="mb-3">
+        <label for="fileinput" class="form-label">Selecione arquivo com configurações de um MT</label>
+        <input class="form-control" type="file" id="fileinput">
         <button type="menu" id="gerarMt" onclick="abrirOp()">Gerar MT</button>
     </div>
+
+    <!--div id="arquivo">  
+        <input type="file" id="fileinput">
+        <button type="menu" id="gerarMt" onclick="abrirOp()">Gerar MT</button>
+    </div-->
+
+
     <div class="ocultar">
         <h5>Palavra</h5>
         <input type="text" id="palavra">
@@ -44,5 +52,7 @@
 </body>
 <!-- JAVASCRIPT-->
 <script src="js/script.js"></script>
+<!-- JavaScript Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 
 </html>
