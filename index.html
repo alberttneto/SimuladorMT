@@ -14,7 +14,22 @@
 
     <h1>Maquina de Turing</h1>
 
-    <section id="arquivo" class="mb-3">
+    <section id="op-radio">
+        <div>
+
+            <input type="radio" name="opcaoradio" id="selectMT" value="selectMT">
+            <label for="selectMT">Selecionar MT</label>
+
+        </div>
+        <div>
+
+            <input type="radio" name="opcaoradio" id="impMT" value="impMT">
+            <label for="impMT">Importar MT</label>
+        </div>
+
+    </section>
+
+    <section id="arquivo" class="mb-3 ocultar">
         <h5>Selecione uma Maquina de Turing </h5>
         
 
@@ -25,6 +40,18 @@
         </div>
     </section>
 
+    <section id="selectArq" class="mb-3 ocultar">
+        <h5>Importe uma Maquina de Turing </h5>
+        
+        <div>
+            <img src="img/icone-engrenagem.png" width="110px">
+            <select name="opcoesMT" id="opcoesMT">
+                <option value="mt1">mt1</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- section class="ocultar" -->
     <section class="ocultar">
         <h5>Palavra</h5>
         <div>
@@ -32,11 +59,12 @@
             <button id="playMt" type="button" class="btn btn-light" onclick="exibirMt()">Iniciar Simulação</button>
         </div>
     </section>
-    <section id="fita" class="ocultar">
+    <section id="fita" class="ocultar"> <!--class="ocultar"-->
         <h5>Fita</h5>
         <ul>
         </ul>
     </section>
+    <!-- section class="ocultar" -->
     <section class="ocultar">  
         <h5>Transição</h5>
         <p id="transicao"></p>

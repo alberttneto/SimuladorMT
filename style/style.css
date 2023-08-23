@@ -34,12 +34,39 @@ section div{
     justify-content: center;
 }
 
+#op-radio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#op-radio > div{
+    display: flex;
+    flex-flow: column;
+}
+
+#op-radio label{
+    margin: 15px;
+    color: black;
+    width: 150px;
+    background-color: white;
+    border-radius: 5px;
+}
+
 #fileinput{
     width: 70%;
 }
+
 section div > *{
     height: 10%;
     margin: auto 5px;
+}
+
+#opcoesMT{
+    width: 75%;
+    height: 40px;
+    border-radius: 5px;
+    text-align: center;
 }
 
 h5{

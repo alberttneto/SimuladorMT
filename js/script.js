@@ -1,4 +1,27 @@
 
+const radio = document.getElementsByName("opcaoradio");
+
+
+
+for (const op of radio) {
+  op.addEventListener("change", function(){
+
+    const sectionIMP = document.getElementById("arquivo");
+    const sectionSEL = document.getElementById("selectArq");
+
+
+    if(this.checked && this.value == "selectMT"){
+      sectionSEL.classList.remove("ocultar");
+      sectionIMP.classList.add("ocultar");
+    } else if (this.checked && this.value == "impMT"){
+      sectionIMP.classList.remove("ocultar");
+      sectionSEL.classList.add("ocultar");
+    }
+  });
+}
+
+
+
 var texto; // maquina de turing
 var palavra; // Palavra a ser aceita pela MT
 
