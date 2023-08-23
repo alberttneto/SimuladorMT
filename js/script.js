@@ -2,6 +2,7 @@
 var texto; // maquina de turing
 var palavra; // Palavra a ser aceita pela MT
 
+
 // Lendo arquivo
 function readSingleFile(evt) {
 
@@ -170,3 +171,7 @@ span.onclick = function() {
   section[2].classList.add("ocultar")
   section[3].classList.add("ocultar");
 }
+
+$('#exampleModalCenter').on('shown.bs.modal', function () {
+  $('#btmodal').trigger('focus')
+})
