@@ -48,7 +48,7 @@ document.getElementById('fileinput').addEventListener('change', readSingleFile, 
 // Abre menu para inserir palavra
 function abrirOp(){
   const section = document.getElementsByTagName("section");
-  section[1].classList.remove("ocultar");
+  section[3].classList.remove("ocultar");
 }
 
 // Inicializa MT
@@ -56,8 +56,8 @@ function exibirMt(){
 
   // Mostra fita
   const section = document.getElementsByTagName("section");
-  section[2].classList.remove("ocultar");
-  section[3].classList.remove("ocultar");
+  section[4].classList.remove("ocultar");
+  section[5].classList.remove("ocultar");
 
   // Transforma texto em objeto
   const obj = JSON.parse(texto);
