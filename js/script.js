@@ -138,8 +138,18 @@ function marcaCelula(pos, direcao, trEntrada, trSaida, i){
     celula.insertAdjacentElement("afterend", icone);
     celula.innerHTML = trSaida[1];
 
-    const p = document.getElementById("transicao");
-    p.innerHTML = trEntrada + " -> " + trSaida;
+    const transEntrada = document.getElementById("transicao-entrada");
+    const transSaida = document.getElementById("transicao-saida");
+
+    transEntrada.innerHTML = 
+    "Estado Origem: " + trEntrada[0] + "\n" +
+    " Ler Fita: " + trEntrada[1];
+
+    transSaida.innerHTML =
+    "Estado Destino: "+ trSaida[0] +
+    " Escreve Fita: " + trSaida[1] +
+    " Direção Fita: " + trSaida[2];
+
   }, 1000 * i);
 }
 
