@@ -32,6 +32,7 @@ section div{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 #op-radio{
@@ -57,11 +58,6 @@ section div{
     width: 70%;
 }
 
-section div > *{
-    height: 10%;
-    margin: auto 5px;
-}
-
 #opcoesMT{
     width: 75%;
     height: 40px;
@@ -84,12 +80,18 @@ ul{
     list-style: none;
 }
 
+
 li{
-    padding: 8px;
+    width: 40px;
+    height: 50px;
     border: 2px solid rgb(42, 50, 55);
-    border-radius: 1.5px;
+    border-radius: 8px;
     background-color: rgb(246, 248, 250);
     color:black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .ocultar{
@@ -97,7 +99,17 @@ li{
 }
 
 .destacaCelula{
-    background-color: rgb(125, 220, 174);
+    border: solid 3px red;
+}
+
+i{
+    color: red;
+    margin-top: 10px;
+}
+
+.marcador-fita{
+    display: flex;
+    flex-flow: column;
 }
 
 /* The Modal (background) */
@@ -117,7 +129,7 @@ li{
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 15% auto;  /*15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 40%; /* Could be more or less, depending on screen size */

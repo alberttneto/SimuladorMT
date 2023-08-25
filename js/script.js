@@ -69,7 +69,7 @@ function exibirMt(){
   var fita = document.getElementById("fita");
 
   // Se ja existe lista, remove Lista
-  if (fita.children){
+  if (fita.querySelector("ul")){
     fita.removeChild(fita.children[1]);
   }
 
@@ -79,9 +79,15 @@ function exibirMt(){
   // Inserindo palavra na fita
   for (elemento of palavra){
     var li = document.createElement("li");
+    var div = document.createElement("div");
+    
     li.appendChild(document.createTextNode(elemento));
     li.setAttribute("id", cont);
-    ul.appendChild(li);
+
+    div.classList.add("marcador-fita");
+    div.appendChild(li);
+
+    ul.appendChild(div);
     fita.appendChild(ul);
     cont++;
   } 
@@ -113,11 +119,23 @@ function transicaoSaida(obj, estado, proxElemento){
 function marcaCelula(pos, direcao, trEntrada, trSaida, i){
   setTimeout(function () {
 
+    // Remove marcador da celula anterior e remove icone de marcação
     var celulaAnterior = document.getElementById(pos-direcao);
+    var iconeAnterior = celulaAnterior.nextElementSibling;
+
+    if(iconeAnterior != null){
+      iconeAnterior.remove();
+    }
+
     celulaAnterior.classList.remove("destacaCelula");
+    
+    // Cria icone de marcação
+    const icone = document.createElement("i");
+    icone.classList.add("fa-solid", "fa-angle-up", "fa-beat");
 
     var celula = document.getElementById(pos);
     celula.classList.add("destacaCelula");
+    celula.insertAdjacentElement("afterend", icone);
     celula.innerHTML = trSaida[1];
 
     const p = document.getElementById("transicao");
@@ -153,8 +171,10 @@ function executaMT(){
         msgFinal = "Palavra não aceita";
         break;
     }
-    console.log(entrada);
+
     marcaCelula(pos, direcao, entrada, saida, i);
+
+
 
     if (saida[2] == 'R'){
       direcao = 1;
@@ -168,12 +188,13 @@ function executaMT(){
       msgFinal = "Palavra aceita";
       break;
     }
+
     i++;
   }
 
   // Espera execução na fita e exibi na tela se a palvra é aceita ou rejeitada.
   setTimeout(function () {
-    finalizacaoMt(msgFinal);
+    finalizacaoMt(msgFinal, pos-direcao);
   }, 1000 * i);
 }
 
@@ -181,10 +202,15 @@ function executaMT(){
 var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close")[0];
 
-function finalizacaoMt(msg){
+function finalizacaoMt(msg, pos){
   var p = document.getElementById("msg");
   p.innerHTML = msg;
   modal.style.display = "block";
+
+  // Remover o destaque da ultima celula mostrada
+  var celula = document.getElementById(pos);
+  var iconeAnterior = celula.nextElementSibling;
+  iconeAnterior.remove();
 }
 
 span.onclick = function() {
@@ -195,6 +221,6 @@ span.onclick = function() {
   section[3].classList.add("ocultar");
 }
 
-$('#exampleModalCenter').on('shown.bs.modal', function () {
-  $('#btmodal').trigger('focus')
-})
+// $('#exampleModalCenter').on('shown.bs.modal', function () {
+//   $('#btmodal').trigger('focus')
+// })
