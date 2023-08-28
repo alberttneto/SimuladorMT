@@ -1,8 +1,6 @@
 
 const radio = document.getElementsByName("opcaoradio");
 
-
-
 for (const op of radio) {
   op.addEventListener("change", function(){
 
@@ -115,6 +113,13 @@ function transicaoSaida(obj, estado, proxElemento){
   return "erro";
 }
 
+const range = document.getElementById("slider");
+const rangeValue = document.getElementById("rangeValue");
+
+range.addEventListener("input", function() {
+    rangeValue.textContent = range.value;
+});
+
 // Marca as celulas de acordo com que vai andando na fita
 function marcaCelula(pos, direcao, trEntrada, trSaida, i){
   setTimeout(function () {
@@ -150,11 +155,19 @@ function marcaCelula(pos, direcao, trEntrada, trSaida, i){
     " Escreve Fita: " + trSaida[1] +
     " Direção Fita: " + trSaida[2];
 
-  }, 1000 * i);
+  }, range.value * 1000 * i);
 }
+
+const inptPalavra = document.getElementById("palavra");
+const inptRanger = document.getElementById("slider");
 
 // Função para iniciar execução da Maquina de Turing
 function executaMT(){
+
+
+  //Desabilita inputs de execução
+  inptPalavra.disabled = true;
+  inptRanger.disabled = true;
 
   const obj = JSON.parse(texto);
   var fita = palavra.split("");
@@ -185,7 +198,6 @@ function executaMT(){
     marcaCelula(pos, direcao, entrada, saida, i);
 
 
-
     if (saida[2] == 'R'){
       direcao = 1;
       pos++;
@@ -205,8 +217,9 @@ function executaMT(){
   // Espera execução na fita e exibi na tela se a palvra é aceita ou rejeitada.
   setTimeout(function () {
     finalizacaoMt(msgFinal, pos-direcao);
-  }, 1000 * i);
+  }, range.value * 1000 * i);
 }
+
 
 // Exibi mensagem no final da execução
 var modal = document.getElementById("myModal");
@@ -227,8 +240,12 @@ span.onclick = function() {
   modal.style.display = "none";
 
   const section = document.getElementsByTagName("section");
-  section[2].classList.add("ocultar")
-  section[3].classList.add("ocultar");
+  // section[4].classList.add("ocultar")
+  section[5].classList.add("ocultar");
+
+  //Habilita inputs de execução
+  inptPalavra.disabled = false;
+  inptRanger.disabled = false;
 }
 
 // $('#exampleModalCenter').on('shown.bs.modal', function () {

@@ -53,12 +53,17 @@
     </section>
 
     <!-- section class="ocultar" -->
-    <section class="ocultar">
-        <h5>Palavra</h5>
+    <section id="executa" class="ocultar">
         <div>
+            <h6>Palavra</h6>
             <input type="text" class="form-control" id="palavra" maxlength="30">
-            <button id="playMt" type="button" class="btn btn-light" onclick="exibirMt()">Iniciar Simulação</button>
         </div>
+        <div>
+            <h6>Velocidade de Transição</h6>
+            <input type="range" name="slider" id="slider" min="1" max="10" step="1" value="1">
+            <span id="rangeValue">1</span><span>s</span>
+        </div>
+        <button id="playMt" type="button" class="btn btn-light" onclick="exibirMt()">Iniciar Simulação</button>
     </section>
     <section id="fita" class="ocultar"> <!--class="ocultar"-->
         <h5>Fita</h5>
