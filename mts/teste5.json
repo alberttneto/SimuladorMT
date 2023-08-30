@@ -1,6 +1,6 @@
 {"Estados":["q0","q1","q2","q3","q4","qf","qv","q>=","q<"],
     "Alfabeto":["1","0"],
-    "AlfabetoFita":["1","0","x","y","B"],
+    "AlfabetoFita":["1","0","X","Y","B"],
     "Transicao":{"q0-1":"q1,X,R","q0-0":"q4,0,R","q1-1":"q1,1,R","q1-0":"q2,0,R","q2-1":"q3,Y,L","q2-Y":"q2,Y,R","q2-B":"qv,B,L","q3-Y":"q3,Y,L","q3-0":"q3,0,L","q3-1":"q3,1,L","q3-X":"q0,X,R","q4-Y":"q4,Y,R","q4-1":"qf,1,L","q4-B":"qv,B,L","qf-0":"qf,0,L","qf-Y":"qf,1,L","qf-X":"qf,1,L","qf-B":"q<,B,R","qv-Y":"qv,1,L","qv-X":"qv,1,L","qv-0":"qv,0,L","qv-1":"qv,1,L","qv-B":"q>=,B,R"},
     "EstadoInicial":"q0",
     "SimboloBranco":"B",

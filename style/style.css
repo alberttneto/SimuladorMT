@@ -150,7 +150,8 @@ input[type="range"]::-webkit-slider-thumb {
     width: 159px;
     height: 100px;
     margin: 10px;
-    padding-top: 15px;
+    padding: 15px 7px;
+    /* padding-top: 15px; */
     border-radius: 5px;
 }
 

@@ -47,6 +47,9 @@
             <select name="opcoesMT" id="opcoesMT">
                 <option value="MmenorN.json">0^M 1^N | N > M</option>
                 <option value="mt0s1s.json">0^N | 1^N</option>
+                <option value="asbs.json">a^N | b^N</option>
+                <option value="asbscs.json">a^N | b^N | c^N</option>
+                <option value="1n01m.json">1^N | 0 | 0^M | M <= N </option>
             </select>
             <button id="gerarMt" type="button" class="btn btn-light" onclick="abrirOp()">Gerar MT</button>
         </div>
@@ -74,8 +77,6 @@
         <h5>Transição</h5>
         <div>
             <p id="transicao-entrada" class="texto-transicao">
-
-                "xxx" + "\n" + "xx"
             </p>
             <i class="fa-solid fa-arrow-right fa-beat" style="color: #ff0000;"></i>
             <p id="transicao-saida" class="texto-transicao"></p>
