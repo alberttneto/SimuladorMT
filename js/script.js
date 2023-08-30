@@ -1,12 +1,14 @@
 
 const radio = document.getElementsByName("opcaoradio");
+var radioMT = "";
 
 for (const op of radio) {
   op.addEventListener("change", function(){
 
+    fetchData();
     const sectionIMP = document.getElementById("arquivo");
     const sectionSEL = document.getElementById("selectArq");
-
+    radioMT = this.value;
 
     if(this.checked && this.value == "selectMT"){
       sectionSEL.classList.remove("ocultar");
@@ -18,6 +20,22 @@ for (const op of radio) {
   });
 }
 
+
+// Revisar código
+const select = document.getElementById("opcoesMT");
+var data;
+
+async function fetchData() {
+  try {
+    const response = await fetch("mts/"+select.value);
+    const responseData = await response.json();
+    data = responseData; // atribui os dados à variável data
+  } catch (error) {
+    console.error('Erro:', error);
+  }
+}
+
+// fetchData();
 
 
 var texto; // maquina de turing
@@ -47,6 +65,7 @@ document.getElementById('fileinput').addEventListener('change', readSingleFile, 
 function abrirOp(){
   const section = document.getElementsByTagName("section");
   section[3].classList.remove("ocultar");
+  fetchData();
 }
 
 // Inicializa MT
@@ -57,8 +76,14 @@ function exibirMt(){
   section[4].classList.remove("ocultar");
   section[5].classList.remove("ocultar");
 
+  var obj = data;
+
+  if (radioMT == "impMT"){
+    obj = JSON.parse(texto);
+  }
+
   // Transforma texto em objeto
-  const obj = JSON.parse(texto);
+
   var input = document.querySelector("#palavra");
   palavra = obj["SimboloBranco"] + input.value + obj["SimboloBranco"]; // Simbolo branco final da palavra
   var cont = 0; // Identificador das celulas da fita
@@ -160,16 +185,26 @@ function marcaCelula(pos, direcao, trEntrada, trSaida, i){
 
 const inptPalavra = document.getElementById("palavra");
 const inptRanger = document.getElementById("slider");
+const buttonPlay = document.getElementById("playMt");
 
 // Função para iniciar execução da Maquina de Turing
 function executaMT(){
 
+  // Desce até o final da página
+  window.scrollTo(0, document.body.scrollHeight);
 
-  //Desabilita inputs de execução
+  //Desabilita inputs e botão de execução
   inptPalavra.disabled = true;
   inptRanger.disabled = true;
+  buttonPlay.disabled = true;
 
-  const obj = JSON.parse(texto);
+  var obj = data;
+
+  if (radioMT == "impMT"){
+    obj = JSON.parse(texto);
+  }
+
+
   var fita = palavra.split("");
   var estado = obj["EstadoInicial"];
   var pos = 1; // identifica posicao na fita
@@ -222,7 +257,7 @@ function executaMT(){
 
 
 // Exibi mensagem no final da execução
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("modalFim");
 var span = document.getElementsByClassName("close")[0];
 
 function finalizacaoMt(msg, pos){
@@ -240,14 +275,26 @@ span.onclick = function() {
   modal.style.display = "none";
 
   const section = document.getElementsByTagName("section");
-  // section[4].classList.add("ocultar")
+
   section[5].classList.add("ocultar");
 
   //Habilita inputs de execução
   inptPalavra.disabled = false;
   inptRanger.disabled = false;
+  buttonPlay.disabled = false;
 }
 
-// $('#exampleModalCenter').on('shown.bs.modal', function () {
-//   $('#btmodal').trigger('focus')
-// })
+
+// Exibir modal Help
+var modalHelp = document.getElementById("modalHelp");
+const help = document.getElementById("help");
+const fecharHelp = document.getElementById("fecharHelp");
+
+help.onclick = function(){
+  modalHelp.style.display = "block";
+}
+
+
+fecharHelp.onclick = function(){
+  modalHelp.style.display = "none";
+}

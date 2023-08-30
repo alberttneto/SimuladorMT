@@ -72,6 +72,14 @@ h5{
     margin-bottom: 15px;
 }
 
+#help{
+    color: red;
+}
+
+#help:hover{
+    cursor: pointer;
+}
+
 #slider, #palavra{
     width: 500px;
     margin: 5px;
